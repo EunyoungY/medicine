@@ -3,14 +3,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:pill_project_app/Review/AllReview.dart';
 import 'package:pill_project_app/Review/MySnackBar.dart';
 import 'package:pill_project_app/Review/Record.dart';
-import 'package:pill_project_app/Review/WriteReview.dart';
-import 'package:pill_project_app/Review/AllReview.dart';
-import 'package:pill_project_app/Review/MySnackBar.dart';
-import 'package:pill_project_app/Review/Record.dart';
-import 'package:pill_project_app/Review/WriteReview.dart';
+import 'file:///C:/Users/21700/AndroidStudioProjects/pill_project_app/lib/pages/WriteReview.dart';
+import 'package:pill_project_app/pages/allReview.dart';
+import 'file:///C:/Users/21700/AndroidStudioProjects/pill_project_app/lib/camera/camera.dart';
 
 
 
@@ -44,23 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           }
         ),
-
-//      body: _buildBody(context),
-//        floatingActionButton: FloatingActionButton(
-//            child: Icon(Icons.create),
-//          backgroundColor: Colors.teal[300],
-//          elevation: 0.0,
-//          onPressed: () {
-//            Navigator.push(
-//                context,
-//                MaterialPageRoute(
-//                    builder: (context) => WriteReview()
-//                ));
-//
-//          }
-//        ),
     );
-    //body: _buildBody(context));
   }
 
   Widget _appbar(BuildContext context) {
@@ -76,7 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
       leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.teal[300]),
           onPressed: () {
-            print("Go back button is clicked");
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MyStatefulWidget()
+//                    builder: (context) => MyApp()
+                ));
+
           }),
       actions: <Widget>[
         IconButton(
@@ -152,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           )),
                       //Container(width: size.width * 0.025),
                       Padding(padding: EdgeInsets.all(5)),
-                      Text(record.effect, style: TextStyle(fontSize: 17.0)),
+                      Text(record.effectText, style: TextStyle(fontSize: 17.0)),
                     ],
                   ),
                   Padding(padding: EdgeInsets.only(top: 6.0)),
@@ -181,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                           )),
                       Padding(padding: EdgeInsets.all(5)),
-                      Text(record.sideEffect, style: TextStyle(fontSize: 17.0)),
+                      Text(record.sideEffectText, style: TextStyle(fontSize: 17.0)),
                     ],
                   ),
                   Padding(padding: EdgeInsets.only(top: 6.0)),
@@ -204,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                           )),
                       Padding(padding: EdgeInsets.all(5)),
-                      Text(record.overall, style: TextStyle(fontSize: 17.0)),
+                      Text(record.overallText, style: TextStyle(fontSize: 17.0)),
                     ],
                   ),
                   Padding(padding: EdgeInsets.only(top: 6.0)),
@@ -255,10 +242,6 @@ class _MyHomePageState extends State<MyHomePage> {
 //            Text("309", style: TextStyle(fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold)),
                 ],
               )
-
-
-
-
             ]));
   }
 
@@ -426,9 +409,6 @@ class _MyHomePageState extends State<MyHomePage> {
 //                        scrollDirection: Axis.vertical,
                           children: snapshot.data.documents.map((DocumentSnapshot data) {
                             final record = Record.fromSnapshot(data);
-//                        Timestamp tt = document["datetime"];
-//                        DateTime dt = DateTime.fromMicrosecondsSinceEpoch(
-//                            tt.microsecondsSinceEpoch);
 
                             return Container(
                                 key: ValueKey(record.name),
@@ -472,7 +452,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   )),
                                               //Container(width: size.width * 0.025),
                                               Padding(padding: EdgeInsets.all(5)),
-                                              Text(record.effect, style: TextStyle(fontSize: 17.0)),
+                                              Text(record.effectText, style: TextStyle(fontSize: 17.0)),
                                             ],
                                           ),
                                           Padding(padding: EdgeInsets.only(top: 6.0)),
@@ -501,7 +481,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     ],
                                                   )),
                                               Padding(padding: EdgeInsets.all(5)),
-                                              Text(record.sideEffect, style: TextStyle(fontSize: 17.0)),
+                                              Text(record.sideEffectText, style: TextStyle(fontSize: 17.0)),
                                             ],
                                           ),
                                           Padding(padding: EdgeInsets.only(top: 6.0)),
@@ -524,7 +504,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     ],
                                                   )),
                                               Padding(padding: EdgeInsets.all(5)),
-                                              Text(record.overall, style: TextStyle(fontSize: 17.0)),
+                                              Text(record.overallText, style: TextStyle(fontSize: 17.0)),
                                             ],
                                           ),
                                           Padding(padding: EdgeInsets.only(top: 6.0)),

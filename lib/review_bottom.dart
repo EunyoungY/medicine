@@ -926,6 +926,7 @@ class Record {
         id = map['id'],
         favoriteSelected = map['favoriteSelected'],
         noFavorite = map['noFavorite'];
+
 //        id = map['id'],
 //        id = map['id'],
 //        id = map['id'],
